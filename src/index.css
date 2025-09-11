@@ -1,13 +1,191 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Global app container */
+.app-container {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ecb2e7, #d6d3d4); /* pastel blue → lavender */
+  color: #333;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Headline */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #5a4b81; /* cozy deep lavender */
+}
+
+/* Age input form */
+.age-form {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.age-form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  margin-left: 0.5rem;
+  background: #fdfdfd;
+}
+
+.age-form button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #a3e4d7; /* pastel mint */
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.age-form button:hover {
+  background: #d68eba;
+  transform: scale(1.05);
+}
+
+/* Heart rate display */
+.heart-rate-display {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #000000; /* pastel pink */
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.05); }
+}
+
+/* Timer */
+.timer {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  color: #444;
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 80%;
+  height: 18px;
+  background: #f2f2f2;
+  border-radius: 12px;
+  margin: 1rem auto;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #a3e4d7, #f9d29d); /* mint → peach */
+  transition: width 1s linear;
+}
+
+/* Zone indicator */
+.zone-indicator {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  transition: color 0.3s ease;
+}
+
+.in-zone {
+  color: #9ad1b6; /* pastel green */
+  animation: glow-green 2s infinite alternate;
+}
+
+.out-zone {
+  color: #ffd480; /* pastel orange-yellow */
+  animation: glow-orange 2s infinite alternate;
+}
+
+@keyframes glow-green {
+  from { text-shadow: 0 0 5px #b3e5cc; }
+  to { text-shadow: 0 0 15px #9ad1b6; }
+}
+
+@keyframes glow-orange {
+  from { text-shadow: 0 0 5px #ffe0a3; }
+  to { text-shadow: 0 0 15px #ffd480; }
+}
+
+/* Buttons */
+.button-row {
+  margin: 1.5rem 0;
+}
+
+.start-btn,
+.stop-btn {
+  font-size: 1.1rem;
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-btn {
+  background: #d3afcd; /* pastel mint */
+  color: #333;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(163, 228, 215, 0.6);
+}
+
+.stop-btn {
+  background: #f9d29d; /* pastel peach */
+  color: #333;
+}
+
+.stop-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 210, 157, 0.6);
+}
+
+/* Session summary card */
+.summary-card {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  animation: fade-in 1s ease;
+}
+
+.summary-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #5a4b81;
+}
+
+.summary-card p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.summary-card .success {
+  color: #9ad1b6; /* pastel green */
+  font-weight: bold;
+}
+
+.summary-card .info {
+  color: #ffd480; /* pastel yellow-orange */
+  font-weight: bold;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
